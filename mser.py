@@ -5,7 +5,7 @@ from mutagen.mp3 import MP3
 import telepot
 from telepot.loop import MessageLoop
 
-key = '476473126:AAEiYB2KMgrAi9UZ1DSEnLsY0h5eKFGaPoI'
+key = ''
 bot = telepot.Bot(key)
 
 q = []
