@@ -6,3 +6,5 @@ After that you will be able to send the index via telegram to the bot and it wil
 By sending more indexes (codes), new songs will be inserted into the queue and will start playing when the previous one ends.
 Hope you will like it.
 Peace out!
+###BTW
+I dont music in the folder, that was just my folder with music that I had
