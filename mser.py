@@ -12,11 +12,11 @@ q = []
 
 empty = False
 
-a = os.listdir('Desktop/music/Music')
+a = os.listdir('Music')
 listall = """Music archive."""
 
 for i in range(0, len(a)):
-    audio = MP3('Desktop/music/Music/{}'.format(a[i]))
+    audio = MP3('Music/{}'.format(a[i]))
     length = audio.info.length
     print('{}.{}'.format(i, a[i]))
     print('Length - {} secs'.format(length))
@@ -52,11 +52,11 @@ while 1:
         try:
             empty = False
             song = q.pop()
-            audio = MP3('Desktop/music/Music/{}'.format(a[int(song)]))
+            audio = MP3('Music/{}'.format(a[int(song)]))
             length = audio.info.length
             print('Successfully popped song - {}'.format(a[int(song)]))
             print('Total queue size - {}'.format(len(q)))
-            os.system('mpv --no-video Desktop/music/Music/\'{}\''.format(
+            os.system('mpv --no-video Music/\'{}\''.format(
                 a[int(song)]
             ))
         except:
