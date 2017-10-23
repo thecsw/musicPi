@@ -1,10 +1,12 @@
 import os
 import sys
 import time
+#Mutagen to get the length of mp3 files, not important!
 from mutagen.mp3 import MP3
 import telepot
 from telepot.loop import MessageLoop
 
+#Telegram bot key
 key = ''
 bot = telepot.Bot(key)
 
