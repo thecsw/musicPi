@@ -11,7 +11,7 @@ key = ''
 bot = telepot.Bot(key)
 
 q = []
-
+#So the app would send the QUEUE IS EMPTY n times, just once
 empty = False
 
 a = os.listdir('Music')
