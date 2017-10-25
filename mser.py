@@ -9,11 +9,11 @@ from telepot.loop import MessageLoop
 #Telegram bot key
 key = ''
 bot = telepot.Bot(key)
-
+#THis is the queue that we will be storing everything
 q = []
 #So the app would send the QUEUE IS EMPTY n times, just once
 empty = False
-
+#The varibale to hold listing
 a = os.listdir('Music')
 listall = """Music archive."""
 
