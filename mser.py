@@ -1,11 +1,9 @@
 #TODO:
 #1. Make a variable to store the musics' destination/folder/directory
-#2. Get rid of the mutagen, not needed. Became redundant
+#2. Get rid of the mutagen, not needed. Became redundant DONE
 import os
 import sys
 import time
-#Mutagen to get the length of mp3 files, not important!
-from mutagen.mp3 import MP3
 import telepot
 from telepot.loop import MessageLoop
 #Telegram bot key
@@ -21,10 +19,7 @@ a = os.listdir('Music')
 listall = """Music archive."""
 #List all music in the directory
 for i in range(0, len(a)):
-    audio = MP3('Music/{}'.format(a[i]))
-    length = audio.info.length
     print('{}.{}'.format(i, a[i]))
-    print('Length - {} secs'.format(length))
     listall = listall + '\n{}.{}'.format(i, a[i])
 # Send message to user with their user ID
 def sms(ID, str):
@@ -58,8 +53,6 @@ while 1:
         try:
             empty = False
             song = q.pop()
-            audio = MP3('Music/{}'.format(a[int(song)]))
-            length = audio.info.length
             print('Successfully popped song - {}'.format(a[int(song)]))
             print('Total queue size - {}'.format(len(q)))
             os.system('mpv --no-video Music/\'{}\''.format(
