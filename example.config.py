@@ -1,0 +1,2 @@
+# YOUR TELEGRAM BOT KEY
+key = ''
