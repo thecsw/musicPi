@@ -6,24 +6,18 @@ import sys
 import time
 import telepot
 from telepot.loop import MessageLoop
-
 import config
 
 #Telegram bot key
 bot = telepot.Bot(config.key)
-
 #THis is the queue that we will be storing everything
 q = []
-
 #So the app would send the QUEUE IS EMPTY n times, just once
 empty = False
-
 #The varibale to hold listing
 a = os.listdir('Music')
-
 #THis one will hold the archive, that will be outputed
 listall = """Music archive."""
-
 #List all music in the directory
 for i in range(0, len(a)):
     print('{}.{}'.format(i, a[i]))
@@ -45,6 +39,11 @@ def handle(msg):
     #Output the whole directory
     if command == '/help':
         sms(user_id, listall)
+        return
+
+    if int(command) > (len(a) - 1):
+        print("Out of range!")
+        sms(user_id, 'Out of range, please enter values from 0 to {}'.format(len(a)-1))
         return
     #Insert from the tail
     q.insert(0, command)
