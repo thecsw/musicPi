@@ -15,7 +15,7 @@ q = []
 #So the app would send the QUEUE IS EMPTY n times, just once
 empty = False
 #The varibale to hold listing
-a = os.listdir('Music')
+a = os.listdir("/media/pi/MUSICPI")
 #THis one will hold the archive, that will be outputed
 listall = """Music archive."""
 #List all music in the directory
@@ -41,16 +41,25 @@ def handle(msg):
         sms(user_id, listall)
         return
 
+    try:
+        numba = int(command)
+    except:
+        sms(user_id, "Not a number!")
+        return
+        
     if int(command) > (len(a) - 1):
         print("Out of range!")
-        sms(user_id, 'Out of range, please enter values from 0 to {}'.format(len(a)-1))
+        sms(user_id, "Out of range, please enter values from 0 to {}".format(len(a)-1))
         return
     #Insert from the tail
+    if a[int(command)] == "System Volume Information":
+        sms(user_id, "A song, not a folder!")
+        return
     q.insert(0, command)
     print('Inserted new song - {}'.format(a[int(command)]))
     print('Total queue size - {}'.format(len(q)))
-    reply(user_id, msg_id, 'Song - {} has been inserted into the queue.\n\
-Your place in the queue - {}'.format(
+    reply(user_id, msg_id, "Song - {} has been inserted into the queue.\n\
+Your place in the queue - {}".format(
     a[int(command)],
     len(q)
     ))
@@ -64,9 +73,9 @@ while 1:
         try:
             empty = False
             song = q.pop()
-            print('Successfully popped song - {}'.format(a[int(song)]))
-            print('Total queue size - {}'.format(len(q)))
-            os.system('mpv --no-video Music/\'{}\''.format(
+            print("Successfully popped song - {}".format(a[int(song)]))
+            print("Total queue size - {}".format(len(q)))
+            os.system("mpv --no-video /media/pi/MUSICPI/\"{}\"".format(
                 a[int(song)]
             ))
         except:
