@@ -14,8 +14,10 @@ bot = telepot.Bot(config.key)
 q = []
 #So the app would send the QUEUE IS EMPTY n times, just once
 empty = False
+# flash/directory name, where the music is
+dir_name = "/media/pi/MUSICPI"
 #The varibale to hold listing
-a = os.listdir("/media/pi/MUSICPI")
+a = os.listdir(dir_name)
 #THis one will hold the archive, that will be outputed
 listall = """Music archive."""
 #List all music in the directory
@@ -82,8 +84,8 @@ while 1:
             song = q.pop()
             print("Successfully popped song - {}".format(a[int(song)]))
             print("Total queue size - {}".format(len(q)))
-            os.system("mpv --no-video /media/pi/MUSICPI/\"{}\"".format(
-                a[int(song)]
+            os.system("mpv --no-video {}/\"{}\"".format(
+                dir_name, a[int(song)]
             ))
         except:
             print('ERROR')
