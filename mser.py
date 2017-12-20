@@ -41,20 +41,27 @@ def handle(msg):
         sms(user_id, listall)
         return
 
+    if command == '/all':
+        for i in range(0, len(a)):
+            q.insert(0, i)
+        sms(user_id, "Successfully inserted all songs. Total queue size - {}".format(len(q)))
+        return
+    
     try:
         numba = int(command)
     except:
         sms(user_id, "Not a number!")
         return
-        
+
+    if a[int(command)] == "System Volume Information":
+        sms(user_id, "A song, not a folder!")
+        return
+    
     if int(command) > (len(a) - 1):
         print("Out of range!")
         sms(user_id, "Out of range, please enter values from 0 to {}".format(len(a)-1))
         return
     #Insert from the tail
-    if a[int(command)] == "System Volume Information":
-        sms(user_id, "A song, not a folder!")
-        return
     q.insert(0, command)
     print('Inserted new song - {}'.format(a[int(command)]))
     print('Total queue size - {}'.format(len(q)))
